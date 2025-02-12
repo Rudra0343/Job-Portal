@@ -18,17 +18,17 @@ const fitlerData = [
 
 const FilterCard = () => {
   return (
-    <div>
-        <h1>Filter Jobs</h1>
+    <div className='w-full bg-white p-3 rounded-md'>
+        <h1 className='font-bold text-lg'>Filter Jobs</h1>
         <hr className='mt-3'/>
         <RadioGroup>
           {
             fitlerData.map((data, index) => (
               <div>
-                <h1>{data.fitlerType}</h1>
+                <h1 className='font-bold text-lg'>{data.fitlerType}</h1>
                 {
                   data.Array.map((item, index) => (
-                      <div key={index}>
+                      <div key={index} className='flex items-center space-x-2 my-1'>
                         <RadioGroupItem value={item}/>
                         <label>{item}</label>
                       </div>
