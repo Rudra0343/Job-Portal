@@ -19,6 +19,7 @@ const Navbar = () => {
                         <li><Link to="/">Home</Link></li>
                         <li><Link to="/jobs">Jobs</Link></li>
                         <li><Link to="/browse">Browse</Link></li>
+                        <li><Link to ="/profile">Profile</Link></li>
                     </ul>
                     {
                         !user ? (
@@ -48,7 +49,7 @@ const Navbar = () => {
                                         <div className='flex flex-col gap-1 text-gray-500'>
                                             <div className='flex w-fit items-center gap-2 cursor-pointer'>
                                                 <User2 />
-                                                <Button variant="link">View Profile</Button>
+                                                <Button variant="link"><Link to="/profile">View Profile</Link></Button>
                                             </div>
                                             <div className='flex w-fit items-center gap-2 cursor-pointer'>
                                                 <LogOut />
