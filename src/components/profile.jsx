@@ -8,12 +8,12 @@ import { Label } from './ui/label'
 import AppliedJobTable from './AppliedJobTable'
 import UpdateProfileDialog from './UpdateProfileDialog'
 
-const skills = ["Html", "css", "Javascript", "Rectjs"]
-const isResume = true;
-
-const profile = () => {
-
+const skills = ["Html", "css", "Javascript", "Reactjs"]
+const  isResume = true;
+ // Assuming you have a state to check if resume is available
+const Profile = () => {
     const [open, setOpen] = useState(false);
+
     return (
         <div>
             <Navbar />
@@ -28,7 +28,7 @@ const profile = () => {
                             <p>Add Your Detail Here.</p>
                         </div>
                     </div>
-                    <Button onClick={()=> setOpen(true)} className="text-right" variant="outline"><Pen /></Button>
+                    <Button onClick={() => setOpen(true)} className="text-right" variant="outline"><Pen /></Button>
                 </div>
                 <div className='my-3'>
                     <div className='flex items-center gap-5'>
@@ -49,19 +49,19 @@ const profile = () => {
                     </div>
                 </div>
                 <div className='grid w-full max-w-sm items-center gap-1.5'>
-                        <Label className="text-md font-bold">Resume</Label>
-                        {
-                            isResume ? <a target='blank' href='https://youtube.com/@patelmernstack' className='text-blue-500 w-full hover:underline cursor-pointer'>Youtube</a> : <span>NA</span>
-                        }
+                    <Label className="text-md font-bold">Resume</Label>
+                    {
+                        isResume ? <a target='_blank' href='https://youtube.com/@patelmernstack' className='text-blue-500 w-full hover:underline cursor-pointer'>Youtube</a> : <span>NA</span>
+                    }
                 </div>
             </div>
             <div className='max-w-4xl mx-auto bg-white rounded-2xl'>
                 <h1 className='font-bold text-lg my-5'>Applied Jobs</h1>
-                <AppliedJobTable/>
+                <AppliedJobTable />
             </div>
-            <UpdateProfileDialog open={open} setOpen={setOpen}/>
+            <UpdateProfileDialog open={open} setOpen={setOpen} />
         </div>
     )
 }
 
-export default profile
+export default Profile
