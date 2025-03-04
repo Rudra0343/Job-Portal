@@ -41,17 +41,27 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
     const submitHandler = async (e) => {
         e.preventDefault();
         const formData = new FormData();
+
         formData.append("fullname", input.fullname);
         formData.append("email", input.email);
         formData.append("phoneNumber", input.phoneNumber);
         formData.append("bio", input.bio);
-        formData.append("skills", input.skills);
+
+        if (Array.isArray(input.skills)) {
+            formData.append("skills", input.skills.join(","));
+        } else {
+            formData.append("skills", input.skills);
+        }
+    
         if (input.file) {
             formData.append("resume", input.file);
         }
+
+        console.log("Sending Data:", Object.fromEntries(formData));
+        
         try {
             setLoading(true);
-            const res = await axios.post(`${USER_API_END_POINT}/profile/update`, formData, {
+            const res = await axios.post(`${USER_API_END_POINT}profile`, formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 },
@@ -63,7 +73,7 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
                 setOpen(false);
             }
         } catch (error) {
-            console.log(error);
+            console.error("Error:", error.response?.data);
             toast.error(error.response?.data?.message);
         } finally {
             setLoading(false);
@@ -137,7 +147,7 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
                                 <Label htmlFor="file" className="text-right">Resume</Label>
                                 <Input
                                     id="file"
-                                    name="file"
+                                    name="resume"
                                     type="file"
                                     accept=".pdf,.doc,.docx"
                                     onChange={fileChangeHandler}
