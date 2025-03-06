@@ -54,7 +54,7 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
         }
     
         if (input.file) {
-            formData.append("resume", input.file);
+            formData.append("Resume", input.file);
         }
 
         console.log("Sending Data:", Object.fromEntries(formData));
@@ -147,7 +147,7 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
                                 <Label htmlFor="file" className="text-right">Resume</Label>
                                 <Input
                                     id="file"
-                                    name="resume"
+                                    name="Resume"
                                     type="file"
                                     accept=".pdf,.doc,.docx"
                                     onChange={fileChangeHandler}
