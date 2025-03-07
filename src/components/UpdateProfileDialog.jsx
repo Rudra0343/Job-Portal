@@ -10,10 +10,12 @@ import { toast } from 'sonner'
 import { USER_API_END_POINT } from './utils/constant'
 import axios from 'axios'
 
+
 const UpdateProfileDialog = ({ open, setOpen }) => {
     const [loading, setLoading] = useState(false);
     const { user } = useSelector(store => store.auth);
     const dispatch = useDispatch();
+    
 
     const [input, setInput] = useState({
         fullname: user?.fullname || "",
