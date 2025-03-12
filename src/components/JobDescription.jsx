@@ -4,6 +4,8 @@ import { Button } from './ui/button'
 
 const JobDescription = () => {
   const isApplied = false;
+
+  
   return (
     <div className='max-w-7xl mx-auto my-10'>
       <div className='flex items-center justify-between'>
