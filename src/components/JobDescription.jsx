@@ -1,11 +1,34 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Badge } from './ui/badge'
 import { Button } from './ui/button'
+import { useParams } from 'react-router-dom';
+import { setSingleJobs } from './redux/jobSlice';
+import axios from 'axios';
+import { JOB_API_END_POINT } from '@/components/utils/constant';
+import { useDispatch, useSelector } from 'react-redux';
 
 const JobDescription = () => {
   const isApplied = false;
+  const params = useParams();
+  const jobId = params.id;
+  const {dispatch} = useDispatch();
+  const {singleJobs} = useSelector(store => store.job);
 
-  
+  useEffect(()=>{
+    const fetchSingleJobs = async () => {
+        try{
+            const res = await axios.get(`${JOB_API_END_POINT}get/${jobId}`, {withCredentials: true});
+            if(res.status === 200){
+                dispatch(setSingleJobs(res.data.jobs));
+            }
+        } catch (error){
+            console.log(error);
+            
+        }
+    }
+    fetchSingleJobs();
+},[jobId,dispatch,user?._id])
+
   return (
     <div className='max-w-7xl mx-auto my-10'>
       <div className='flex items-center justify-between'>
