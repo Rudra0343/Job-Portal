@@ -65,7 +65,7 @@ const submitHandler = async (e) => {
             toast.success(res.data.message);
         }
     } catch (error) {
-        console.log(error);
+        console.log();
         toast.error(error.response?.data?.message);
     } finally{
         dispatch(setLoading(false));
@@ -147,6 +147,7 @@ const submitHandler = async (e) => {
                             <Label htmlFor="profile-upload">Profile</Label>
                             <Input
                                 accept="image/*"
+                                name="resume"
                                 type='file'
                                 onChange={changeFileHandler}
                                 className='cursor-pointer'
